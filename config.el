@@ -96,7 +96,9 @@
   (map! :map evil-normal-state-map :g "gs" #'swiper))
 
 ;; Remove evil inhibit
-(setq evil-escape-inhibit-functions nil)
+(after! evil-escape
+  (setq evil-escape-inhibit-functions nil)
+)
 
 ;; Color mode
 (add-hook 'prog-mode-hook 'rainbow-identifiers-mode)
