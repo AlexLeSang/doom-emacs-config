@@ -1,0 +1,11 @@
+#+TITLE:   Olek's doom-emacs configuration
+#+DATE:    November 30, 2020
+#+SINCE:   Doom v2.0.9 (grafted, HEAD -> develop, origin/develop, origin/HEAD 3d53497 2020-11-29 13:58:50 -0500)
+#+STARTUP: inlineimages nofold showall
+
+* Table of Contents :TOC_3:noexport:
+
+* Description
+Olek's configuration for doom-emacs.
+
+Doom-emacs is extended with spacemacs keybindings and additional modules to make the transition easier.
