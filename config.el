@@ -97,9 +97,15 @@
 
 ;; Remove evil inhibit
 (after! evil-escape
-  (setq evil-escape-inhibit-functions nil)
-)
+  (setq evil-escape-inhibit-functions nil))
 
 ;; Color mode
 (add-hook 'prog-mode-hook 'rainbow-identifiers-mode)
 (add-hook 'prog-mode-hook 'color-identifiers-mode)
+
+(after! company
+  (setq company-idle-delay 0))
+
+(after! ivy
+  (setq ivy-re-builders-alist
+        '((t . ivy--regex-ignore-order))))
