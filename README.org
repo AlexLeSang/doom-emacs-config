@@ -9,6 +9,15 @@ Olek's configuration for doom-emacs.
 
 Doom-emacs is extended with spacemacs keybindings and additional modules to make the transition easier.
 
+* Chemacs .emacs-profiles.el
+#+begin_src emacs-lisp
+(
+ ("default" . ((user-emacs-directory . "~/.emacs.d")))
+ ("clean" . ((user-emacs-directory . "~/.clean.emacs.d")))
+ ("spacemacs" . ((user-emacs-directory . "~/.spacemacs.emacs.d")))
+ )
+#+end_src emacs-lisp
+
 * Platform
 ** Doom Version
 #+begin_quote
