@@ -52,7 +52,7 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-(setq doom-font (font-spec :family "Source Code Pro" :size 13))
+(setq doom-font (font-spec :family "Source Code Pro" :size 14))
 
 ;; spacemacs keybindings
 (setq evil-escape-key-sequence "fd")
@@ -104,7 +104,8 @@
 (add-hook 'prog-mode-hook 'color-identifiers-mode)
 
 (after! company
-  (setq company-idle-delay 0))
+  (setq company-idle-delay 0.15)
+  (setq company-minimum-prefix-length 3))
 
 (after! ivy
   (setq ivy-re-builders-alist
