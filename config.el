@@ -85,9 +85,15 @@
 (add-hook 'prog-mode-hook 'rainbow-identifiers-mode)
 (add-hook 'prog-mode-hook 'color-identifiers-mode)
 
+;; company settings
 (after! company
-  (setq company-idle-delay 0.15)
-  (setq company-minimum-prefix-length 3))
+  (setq company-idle-delay 0.15
+        company-minimum-prefix-length 2)
+  (setq company-show-numbers t)
+  (add-hook 'evil-normal-state-entry-hook #'company-abort))
+
+(setq-default history-length 1000)
+(setq-default prescient-history-length 1000)
 
 ;; (after! ivy-posframe
 ;;   ; Set frame position
@@ -155,3 +161,22 @@
   :commands (info-colors-fontify-node))
 
 (add-hook 'Info-selection-hook 'info-colors-fontify-node)
+
+
+(use-package! vlf-setup
+  :defer-incrementally vlf vlf-tune vlf-base vlf-write vlf-search vlf-occur vlf-follow vlf-ediff)
+
+(use-package abbrev
+  :init
+  (setq-default abbrev-mode t)
+  ;; a hook funtion that sets the abbrev-table to org-mode-abbrev-table
+  ;; whenever the major mode is a text mode
+  (defun tec/set-text-mode-abbrev-table ()
+    (if (derived-mode-p 'text-mode)
+        (setq local-abbrev-table org-mode-abbrev-table)))
+  :commands abbrev-mode
+  :hook
+  (abbrev-mode . tec/set-text-mode-abbrev-table)
+  :config
+  (setq abbrev-file-name (expand-file-name "abbrev.el" doom-private-dir))
+  (setq save-abbrevs 'silently))

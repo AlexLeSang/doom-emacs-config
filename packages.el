@@ -71,3 +71,9 @@
 (package! zenburn-theme)
 
 (package! info-colors)
+
+(package! vlf)
+
+(package! org-graph-view :recipe (:host github :repo "alphapapa/org-graph-view"))
+
+(package! systemd)
