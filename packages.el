@@ -67,3 +67,5 @@
 (package! rainbow-identifiers)
 
 (package! color-identifiers-mode)
+
+(package! zenburn-theme)
