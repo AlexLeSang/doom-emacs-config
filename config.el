@@ -149,3 +149,9 @@
   (setq lsp-ui-doc-enable t
         lsp-ui-sideline-show-code-actions t
         lsp-ui-sideline-show-diagnostics t))
+
+;; info-colors
+(use-package! info-colors
+  :commands (info-colors-fontify-node))
+
+(add-hook 'Info-selection-hook 'info-colors-fontify-node)
