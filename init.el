@@ -33,7 +33,7 @@
        ;;(emoji +unicode)  ; 🙂
        ;;fill-column       ; a `fill-column' indicator
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
-       ;; hydra
+       hydra
        indent-guides     ; highlighted indent columns
        ;; (ligatures +extra); ligatures and symbols to make your code pretty again
        ;; minimap           ; show a map of the code on the side
@@ -49,7 +49,7 @@
        ;; vi-tilde-fringe   ; fringe tildes to mark beyond EOB
        (window-select +numbers)     ; visually switch windows
        workspaces        ; tab emulation, persistence & separate workspaces
-       ;;zen               ; distraction-free coding or writing
+       zen               ; distraction-free coding or writing
 
        :editor
        (evil +everywhere); come to the dark side, we have cookies
@@ -79,8 +79,7 @@
        vterm             ; the best terminal emulation in Emacs
 
        :checkers
-       syntax              ; tasing you for every semicolon you forget
-       ;; (spell +everywhere)             ; tasing you for misspelling mispelling
+       syntax            ; tasing you for every semicolon you forget
        spell             ; tasing you for misspelling mispelling
        grammar           ; tasing grammar mistake every you make
 
@@ -118,7 +117,7 @@
        ;;coq               ; proofs-as-programs
        ;;crystal           ; ruby at the speed of c
        ;;csharp            ; unity, .NET, and mono shenanigans
-       ;;data              ; config/data formats
+       data              ; config/data formats
        ;;(dart +flutter)   ; paint ui and not much else
        ;;elixir            ; erlang done right
        ;;elm               ; care for a cup of TEA?
@@ -149,14 +148,14 @@
        ;;ocaml             ; an objective camel
        (org +pretty +journal +pandoc +present)               ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
-       ;;plantuml          ; diagrams for confusing people more
+       plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
        (python +lsp)            ; beautiful is better than ugly
-       ;;qt                ; the 'cutest' gui framework ever
+       qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6
-       ;;rest              ; Emacs as a REST client
-       ;;rst               ; ReST in peace
+       rest              ; Emacs as a REST client
+       rst               ; ReST in peace
        ;;(ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
        ;;rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
@@ -166,8 +165,8 @@
        ;;solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
-       ;;web               ; the tubes
-       ;;yaml              ; JSON, but readable
+       web               ; the tubes
+       yaml              ; JSON, but readable
 
        :email
        ;;(mu4e +gmail)
