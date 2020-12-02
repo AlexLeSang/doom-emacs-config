@@ -13,7 +13,7 @@
 * Description
 Olek's configuration for doom-emacs.
 
-Doom-emacs is extended with spacemacs keybindings and additional modules to make the transition easier.
+Doom-emacs extended with spacemacs keybindings and additional modules to make the transition easier.
 
 * Chemacs .emacs-profiles.el
 #+begin_src emacs-lisp
@@ -32,7 +32,7 @@ Doom v2.0.9 (HEAD -> develop, origin/develop, origin/HEAD 6e6b5d93 2020-12-01 13
 
 ** Emacs Version
 #+begin_quote
-GNU Emacs 28.0.50 (build 1, x86_64-pc-linux-gnu, GTK+ Version 3.24.23, cairo version 1.17.3) of 2020-11-27
+GNU Emacs 28.0.50 (build 2, x86_64-pc-linux-gnu, GTK+ Version 3.24.23, cairo version 1.17.3) of 2020-12-02
 #+end_quote
 
 ** OS Version
