@@ -2,7 +2,7 @@
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
-
+(setq fancy-splash-image "~/.doom.d/banner/emacs.png")
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
@@ -25,8 +25,6 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-;; (setq doom-theme 'doom-one)
-;; (setq doom-theme 'doom-zenburn)
 (setq doom-theme 'zenburn)
 
 ;; If you use `org' and don't want your org files in the default location below,
@@ -35,7 +33,7 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type nil)
+(setq display-line-numbers-type 'relative)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -54,7 +52,7 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 ;; (setq doom-font (font-spec :family "Source Code Pro" :size 15))
-(setq doom-font (font-spec :family "Fira Code" :size 14))
+(setq doom-font (font-spec :family "Fira Code" :size 13))
 
 (setq gc-cons-threshold 87777216)
 (setq gc-cons-percentage 0.2)
@@ -96,6 +94,9 @@
 (after! ivy
   (add-hook 'eshell-mode-hook 'spacemacs/init-ivy-eshell))
 
+(after! ivy-posframe
+  (setq ivy-posframe-border-width 1))
+
 ;; switch to buffer
 (after! ivy
   (map! :map evil-normal-state-map :g "<C-tab>" #'switch-to-buffer)
@@ -116,3 +117,33 @@
 (after! ivy
   (setq ivy-re-builders-alist
         '((t . ivy--regex-ignore-order))))
+
+;; (after! ivy-posframe
+;;   ; Set frame position
+;;   (setf (alist-get t ivy-posframe-display-functions-alist)
+;;         #'ivy-posframe-display-at-frame-top-center))
+
+(add-hook 'window-setup-hook #'toggle-frame-maximized)
+
+;; magit-todos uses hl-todo-keywords
+(after! hl-todo
+  (setq hl-todo-keyword-faces
+        `(("TODO"  . ,(face-foreground 'warning))
+          ("HACK"  . ,(face-foreground 'warning))
+          ("TEMP"  . ,(face-foreground 'warning))
+          ("DONE"  . ,(face-foreground 'success))
+          ("NOTE"  . ,(face-foreground 'success))
+          ("DONT"  . ,(face-foreground 'error))
+          ("DEBUG"  . ,(face-foreground 'error))
+          ("FAIL"  . ,(face-foreground 'error))
+          ("FIXME" . ,(face-foreground 'error))
+          ("XXX"   . ,(face-foreground 'error))
+          ("XXXX"  . ,(face-foreground 'error)))))
+
+;; eshell aliases
+(after! eshell
+  ;; eshell-mode imenu index
+  (defun eshell/l (&rest args) (eshell/ls "-l" args))
+  (defun eshell/e (file) (find-file file))
+  (defun eshell/md (dir) (eshell/mkdir dir) (eshell/cd dir))
+  )

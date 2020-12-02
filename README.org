@@ -3,6 +3,12 @@
 #+STARTUP: inlineimages nofold showall
 
 * Table of Contents :TOC_3:noexport:
+- [[#description][Description]]
+- [[#chemacs-emacs-profilesel][Chemacs .emacs-profiles.el]]
+- [[#platform][Platform]]
+  - [[#doom-version][Doom Version]]
+  - [[#emacs-version][Emacs Version]]
+  - [[#os-version][OS Version]]
 
 * Description
 Olek's configuration for doom-emacs.
@@ -21,7 +27,7 @@ Doom-emacs is extended with spacemacs keybindings and additional modules to make
 * Platform
 ** Doom Version
 #+begin_quote
-Doom v2.0.9 (grafted, HEAD -> develop, origin/develop, origin/HEAD 3d53497 2020-11-29 13:58:50 -0500)
+Doom v2.0.9 (HEAD -> develop, origin/develop, origin/HEAD 6e6b5d93 2020-12-01 13:55:56 -0500)
 #+end_quote
 
 ** Emacs Version
