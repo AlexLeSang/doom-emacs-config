@@ -66,41 +66,16 @@
 
 (load! "~/.doom.d/modules/spacemacs/+spacemacs")
 
-;; eshell history (inspired by the one in spacemacs)
-(defun spacemacs/ivy-eshell-history ()
-  (interactive)
-  (counsel-esh-history)
-  (evil-insert-state))
-
-(defun eshell/clear ()
-  (let ((inhibit-read-only t))
-    (erase-buffer)))
-
-;; This is a key-command
-(defun spacemacs/eshell-clear-keystroke ()
-  "Allow for keystrokes to invoke eshell/clear"
-  (interactive)
-  (eshell/clear))
-
-(defun spacemacs/init-ivy-eshell ()
-  "Initialize ivy-eshell."
-  (progn
-   (map! :map eshell-mode-map :in "C-l" nil)
-   (map! :map eshell-mode-map :in "C-l" #'spacemacs/eshell-clear-keystroke)
-   (map! :map eshell-mode-map :in "M-l" nil)
-   (map! :map eshell-mode-map :in "M-l" #'spacemacs/ivy-eshell-history))
-  )
-
 (after! ivy
-  (add-hook 'eshell-mode-hook 'spacemacs/init-ivy-eshell))
+  ;; switch to buffer
+  (map! :map evil-normal-state-map :g "<C-tab>" #'switch-to-buffer)
+  (map! :map evil-normal-state-map :g "gs" #'swiper)
+  (setq +ivy-buffer-preview t)
+  (setq ivy-re-builders-alist
+        '((t . ivy--regex-ignore-order))))
 
 (after! ivy-posframe
   (setq ivy-posframe-border-width 1))
-
-;; switch to buffer
-(after! ivy
-  (map! :map evil-normal-state-map :g "<C-tab>" #'switch-to-buffer)
-  (map! :map evil-normal-state-map :g "gs" #'swiper))
 
 ;; Remove evil inhibit
 (after! evil-escape
@@ -113,10 +88,6 @@
 (after! company
   (setq company-idle-delay 0.15)
   (setq company-minimum-prefix-length 3))
-
-(after! ivy
-  (setq ivy-re-builders-alist
-        '((t . ivy--regex-ignore-order))))
 
 ;; (after! ivy-posframe
 ;;   ; Set frame position
@@ -146,4 +117,35 @@
   (defun eshell/l (&rest args) (eshell/ls "-l" args))
   (defun eshell/e (file) (find-file file))
   (defun eshell/md (dir) (eshell/mkdir dir) (eshell/cd dir))
-  )
+
+  ;; This is a key-command
+  (defun my/eshell-clear-keystroke ()
+    "Allow for keystrokes to invoke eshell/clear"
+    (interactive)
+    (eshell/clear-scrollback)
+    (eshell-send-input))
+
+  (defun my/ivy-eshell-history ()
+    (interactive)
+    (counsel-esh-history)
+    (evil-insert-state))
+
+  (defun spacemacs/init-ivy-eshell ()
+    "Initialize ivy-eshell."
+    (progn
+      (map! :map eshell-mode-map :in "C-l" nil)
+      (map! :map eshell-mode-map :in "C-l" #'my/eshell-clear-keystroke)
+      (map! :map eshell-mode-map :in "M-l" nil)
+      (map! :map eshell-mode-map :in "M-l" #'my/ivy-eshell-history)))
+
+  (add-hook 'eshell-mode-hook 'spacemacs/init-ivy-eshell))
+
+;; evil snipe
+(after! evil-snipe
+  (setq evil-snipe-scope 'whole-visible))
+
+;; lsp
+(after! lsp-ui
+  (setq lsp-ui-doc-enable t
+        lsp-ui-sideline-show-code-actions t
+        lsp-ui-sideline-show-diagnostics t))
