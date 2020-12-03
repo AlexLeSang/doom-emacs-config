@@ -87,8 +87,8 @@
 
 ;; company settings
 (after! company
-  (setq company-idle-delay 0.15
-        company-minimum-prefix-length 2)
+  (setq company-idle-delay 0.8
+        company-minimum-prefix-length 3)
   (setq company-show-numbers t)
   (add-hook 'evil-normal-state-entry-hook #'company-abort))
 
@@ -180,3 +180,26 @@
   :config
   (setq abbrev-file-name (expand-file-name "abbrev.el" doom-private-dir))
   (setq save-abbrevs 'silently))
+
+;; Extend mode config
+(add-to-list 'auto-mode-alist '("\\.xslt\\'" . nxml-mode))
+(add-to-list 'auto-mode-alist '("\\Dockerfile-build\\'" . dockerfile-mode))
+(add-to-list 'auto-mode-alist '("conanfile.txt" . conf-mode))
+(add-to-list 'auto-mode-alist '("\\.prf\\'" . conf-mode))
+(add-to-list 'auto-mode-alist '("\\.ks\\'" . conf-mode))
+(add-to-list 'auto-mode-alist '("\\.repo\\'" . conf-mode))
+(add-to-list 'auto-mode-alist '("\\.conf\\'" . conf-mode))
+(add-to-list 'auto-mode-alist '("\\.as$" . js-mode))
+
+;; (defun remove-dos-eol ()
+;;   "Do not show ^M in files containing mixed UNIX and DOS line endings."
+;;   (interactive)
+;;   (setq buffer-display-table (make-display-table))
+;;   (aset buffer-display-table ?\^M []))
+
+;; (add-hook 'c++-mode-hook #'remove-dos-eol)
+
+;; (require 'logview)
+
+(after! avy
+  (setq avy-all-windows 'all-frames))
