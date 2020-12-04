@@ -234,8 +234,7 @@
           (if (looking-at "->") t nil)))))
 
   (defun do-yas-expand ()
-    (let ((yas/fallback-behavior 'return-nil))
-      (yas/expand)))
+    (yas/expand))
 
   (defun tab-indent-or-complete ()
     (interactive)
