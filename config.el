@@ -211,3 +211,6 @@
 
 (after! avy
   (setq avy-all-windows 'all-frames))
+
+(after! all-the-icons
+  (setq all-the-icons-scale-factor 1.0))
