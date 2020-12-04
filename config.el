@@ -174,20 +174,17 @@
 (use-package! vlf-setup
   :defer-incrementally vlf vlf-tune vlf-base vlf-write vlf-search vlf-occur vlf-follow vlf-ediff)
 
-(use-package abbrev
-  :init
+;; abbrev completion
+(after! abbrev
   (setq-default abbrev-mode t)
-  ;; a hook funtion that sets the abbrev-table to org-mode-abbrev-table
-  ;; whenever the major mode is a text mode
+  (setq abbrev-file-name (expand-file-name "abbrev.el" doom-private-dir)
+        save-abbrevs 'silently)
+
   (defun tec/set-text-mode-abbrev-table ()
     (if (derived-mode-p 'text-mode)
         (setq local-abbrev-table org-mode-abbrev-table)))
-  :commands abbrev-mode
-  :hook
-  (abbrev-mode . tec/set-text-mode-abbrev-table)
-  :config
-  (setq abbrev-file-name (expand-file-name "abbrev.el" doom-private-dir))
-  (setq save-abbrevs 'silently))
+
+  (add-hook 'abbrev-mode-hook #'tec/set-text-mode-abbrev-table))
 
 ;; Extend mode config
 (add-to-list 'auto-mode-alist '("\\.xslt\\'" . nxml-mode))
