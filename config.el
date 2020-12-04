@@ -214,3 +214,12 @@
 
 (after! all-the-icons
   (setq all-the-icons-scale-factor 1.0))
+
+;; modeline
+(after! doom-modeline
+  (setq doom-modeline-height 20
+        doom-modeline-buffer-encoding nil
+        doom-modeline-gnus nil
+        doom-modeline-gnus-timer 0
+        doom-modeline-irc nil))
+
