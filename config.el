@@ -92,6 +92,10 @@
   (setq company-show-numbers t)
   (add-hook 'evil-normal-state-entry-hook #'company-abort))
 
+
+(after! company-box-doc
+  (setq company-box-doc-delay 1.6))
+
 (setq-default history-length 1000)
 (setq-default prescient-history-length 1000)
 
@@ -153,6 +157,10 @@
 ;; lsp
 (after! lsp-ui
   (setq lsp-ui-doc-enable t
+        lsp-signature-auto-activate nil
+        lsp-file-watch-threshold nil
+        lsp-ui-doc-position 'bottom
+        lsp-ui-doc-include-signature t
         lsp-ui-sideline-show-code-actions t
         lsp-ui-sideline-show-diagnostics t))
 
