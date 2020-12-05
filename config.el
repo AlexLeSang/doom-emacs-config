@@ -143,6 +143,7 @@
   (defun spacemacs/init-ivy-eshell ()
     "Initialize ivy-eshell."
     (progn
+      (map! :map eshell-mode-map :i "<tab>" #'completion-at-point)
       (map! :map eshell-mode-map :in "C-l" nil)
       (map! :map eshell-mode-map :in "C-l" #'my/eshell-clear-keystroke)
       (map! :map eshell-mode-map :in "M-l" nil)
@@ -243,5 +244,9 @@
               (company-complete-common)
             (indent-for-tab-command)))))
 
-  (map! :map evil-insert-state-map :i "<tab>" nil)
-  (map! :map evil-insert-state-map :i "<tab>" #'tab-indent-or-complete))
+  (map! :map evil-insert-state-map :ig "<tab>" nil)
+  (map! :map evil-insert-state-map :ig "<tab>" #'tab-indent-or-complete))
+
+
+;; Arduino
+(setq auto-mode-alist (cons '("\\.\\(pde\\|ino\\)$" . arduino-mode) auto-mode-alist))

@@ -77,3 +77,5 @@
 (package! org-graph-view :recipe (:host github :repo "alphapapa/org-graph-view"))
 
 (package! systemd)
+
+(package! arduino-mode :recipe (:host github :repo "bookest/arduino-mode"))
