@@ -243,5 +243,5 @@
               (company-complete-common)
             (indent-for-tab-command)))))
 
-  (map! :map evil-insert-state-map :ig "<tab>" nil)
-  (map! :map evil-insert-state-map :ig "<tab>" #'tab-indent-or-complete))
+  (map! :map evil-insert-state-map :i "<tab>" nil)
+  (map! :map evil-insert-state-map :i "<tab>" #'tab-indent-or-complete))
