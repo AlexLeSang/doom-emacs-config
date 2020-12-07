@@ -79,3 +79,5 @@
 (package! systemd)
 
 (package! arduino-mode :recipe (:host github :repo "bookest/arduino-mode"))
+
+(package! clang-format)

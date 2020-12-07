@@ -250,3 +250,12 @@
 
 ;; Arduino
 (setq auto-mode-alist (cons '("\\.\\(pde\\|ino\\)$" . arduino-mode) auto-mode-alist))
+
+;; clang-format
+(after! clang-format
+  (map! :after ccls
+        :map (c-mode-map c++-mode-map)
+        (:localleader
+         :desc "clang-format buffer" "==" #'clang-format-buffer
+         :desc "clang-format buffer" "=b" #'clang-format-buffer
+         :desc "clang-format region" "=r" #'clang-format-region)))
