@@ -83,8 +83,8 @@
   (setq evil-escape-inhibit-functions nil))
 
 ;; Color mode
-(add-hook 'prog-mode-hook 'rainbow-identifiers-mode)
-(add-hook 'prog-mode-hook 'color-identifiers-mode)
+(add-hook 'prog-mode-hook #'rainbow-identifiers-mode)
+(add-hook 'prog-mode-hook #'color-identifiers-mode)
 
 ;; company settings
 (setq compleiton-delay 0.8
@@ -125,7 +125,6 @@
           ("XXX"   . ,(face-foreground 'error))
           ("XXXX"  . ,(face-foreground 'error)))))
 
-
 ;; protect eshell
 (after! eshell
   (defun my/toggle-shell-auto-completion-based-on-path ()
@@ -137,7 +136,7 @@ the user activate the completion manually."
         (setq-local company-idle-delay nil)
       (setq-local company-idle-delay compleiton-delay)))
 
-  (add-hook 'eshell-directory-change-hook 'my/toggle-shell-auto-completion-based-on-path)
+  (add-hook 'eshell-directory-change-hook #'my/toggle-shell-auto-completion-based-on-path)
 
   (defun my/eshell-auto-end ()
     "Move point to end of current prompt when switching to insert state."
@@ -149,8 +148,8 @@ the user activate the completion manually."
                )
       (end-of-buffer)))
 
-  (add-hook 'evil-insert-state-entry-hook 'my/eshell-auto-end)
-  (add-hook 'evil-hybrid-state-entry-hook 'my/eshell-auto-end)
+  (add-hook 'evil-insert-state-entry-hook #'my/eshell-auto-end)
+  (add-hook 'evil-hybrid-state-entry-hook #'my/eshell-auto-end)
   )
 
 ;; eshell aliases
@@ -181,7 +180,7 @@ the user activate the completion manually."
       (map! :map eshell-mode-map :in "M-l" nil)
       (map! :map eshell-mode-map :in "M-l" #'my/ivy-eshell-history)))
 
-  (add-hook 'eshell-mode-hook 'spacemacs/init-ivy-eshell))
+  (add-hook 'eshell-mode-hook #'spacemacs/init-ivy-eshell))
 
 ;; evil snipe
 (after! evil-snipe
@@ -197,11 +196,14 @@ the user activate the completion manually."
         lsp-ui-sideline-show-code-actions t
         lsp-ui-sideline-show-diagnostics t))
 
+(after! lsp-ui-peek
+  (setq lsp-ui-peek-enable nil))
+
 ;; info-colors
 (use-package! info-colors
   :commands (info-colors-fontify-node))
 
-(add-hook 'Info-selection-hook 'info-colors-fontify-node)
+(add-hook 'Info-selection-hook #'info-colors-fontify-node)
 
 
 (use-package! vlf-setup
@@ -293,8 +295,8 @@ the user activate the completion manually."
            :desc "clang-format buffer" "=b" #'clang-format-buffer
            :desc "clang-format region" "=r" #'clang-format-region))))
 
-(add-hook 'c++-mode-hook 'init-clang-format-buffer)
-(add-hook 'c-mode-hook 'init-clang-format-buffer)
+(add-hook 'c++-mode-hook #'init-clang-format-buffer)
+(add-hook 'c-mode-hook #'init-clang-format-buffer)
 
 ;; spacemacs/enter-ahs-backward
 (after! evil-commands
