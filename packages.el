@@ -69,6 +69,7 @@
 (package! color-identifiers-mode)
 
 (package! zenburn-theme)
+(package! hc-zenburn-theme)
 
 (package! info-colors)
 
