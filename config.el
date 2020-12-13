@@ -294,3 +294,44 @@ the user activate the completion manually."
 
 (add-hook 'c++-mode-hook 'init-clang-format-buffer)
 (add-hook 'c-mode-hook 'init-clang-format-buffer)
+
+;; spacemacs/enter-ahs-backward
+(after! evil-commands
+  (map! :map evil-motion-state-map "*" #'spacemacs/enter-ahs-forward)
+  )
+
+;; highlighting symbols
+(after! auto-highlight-symbol
+  (defun my/expand-symbol-highligh-mode ()
+    (progn
+      (setq spacemacs--symbol-highlight-transient-state-doc
+            (concat
+             spacemacs--symbol-highlight-transient-state-doc
+             "  Search: [_s_] swiper  [_b_] buffers  [_f_] files  [_/_] project"))
+      (spacemacs/transient-state-register-add-bindings 'symbol-highlight
+        '(("s" swiper-thing-at-point :exit t)
+          ("b" swiper-all-thing-at-point :exit t)
+          ("f" +default/search-other-cwd :exit t)
+          ("/" +default/search-project-for-symbol-at-point :exit t)
+          ))
+      )
+    (spacemacs|define-transient-state symbol-highlight
+      :title "Symbol Highlight Transient State"
+      :hint-is-doc t
+      :dynamic-hint (spacemacs//symbol-highlight-ts-doc)
+      :before-exit (spacemacs//ahs-ts-on-exit)
+      :bindings
+      ("d" ahs-forward-definition)
+      ("D" ahs-backward-definition)
+      ("e" spacemacs/ahs-to-iedit :exit t)
+      ("n" spacemacs/quick-ahs-forward)
+      ("N" spacemacs/quick-ahs-backward)
+      ("p" spacemacs/quick-ahs-backward)
+      ("R" ahs-back-to-start)
+      ("r" ahs-change-range)
+      ("z" (progn (recenter-top-bottom)
+                  (spacemacs/symbol-highlight)))
+      ("q" nil :exit t)))
+
+  (add-hook 'auto-highlight-symbol-mode-hook #'my/expand-symbol-highligh-mode)
+  )
