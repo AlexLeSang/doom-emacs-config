@@ -86,15 +86,18 @@
 (add-hook 'prog-mode-hook 'color-identifiers-mode)
 
 ;; company settings
+(setq compleiton-delay 0.8
+      completion-box-doc-delay (* compleiton-delay 2))
+
 (after! company
-  (setq company-idle-delay 0.8
+  (setq company-idle-delay compleiton-delay
         company-minimum-prefix-length 3)
   (setq company-show-numbers t)
   (add-hook 'evil-normal-state-entry-hook #'company-abort))
 
 
 (after! company-box-doc
-  (setq company-box-doc-delay 1.6))
+  (setq company-box-doc-delay completion-box-doc-delay))
 
 (setq-default history-length 1000)
 (setq-default prescient-history-length 1000)
@@ -120,6 +123,34 @@
           ("FIXME" . ,(face-foreground 'error))
           ("XXX"   . ,(face-foreground 'error))
           ("XXXX"  . ,(face-foreground 'error)))))
+
+
+;; protect eshell
+(after! eshell
+  (defun my/toggle-shell-auto-completion-based-on-path ()
+    "Deactivates automatic completion on remote paths.
+Retrieving completions for Eshell blocks Emacs. Over remote
+connections the delay is often annoying, so it's better to let
+the user activate the completion manually."
+    (if (file-remote-p default-directory)
+        (setq-local company-idle-delay nil)
+      (setq-local company-idle-delay compleiton-delay)))
+
+  (add-hook 'eshell-directory-change-hook 'my/toggle-shell-auto-completion-based-on-path)
+
+  (defun my/eshell-auto-end ()
+    "Move point to end of current prompt when switching to insert state."
+    (when (and (eq major-mode 'eshell-mode)
+               ;; Not on last line, we might want to edit within it.
+               (not (>= (point) eshell-last-output-end))
+               ;; Not on the last sent command if we use smart-eshell so we can
+               ;; edit it.
+               )
+      (end-of-buffer)))
+
+  (add-hook 'evil-insert-state-entry-hook 'my/eshell-auto-end)
+  (add-hook 'evil-hybrid-state-entry-hook 'my/eshell-auto-end)
+  )
 
 ;; eshell aliases
 (after! eshell
