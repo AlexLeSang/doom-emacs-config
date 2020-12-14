@@ -305,19 +305,17 @@ the user activate the completion manually."
 
 ;; highlighting symbols
 (after! auto-highlight-symbol
+  (setq spacemacs--symbol-highlight-transient-state-doc
+        (concat
+         spacemacs--symbol-highlight-transient-state-doc
+         "  Search: [_s_] swiper  [_b_] buffers  files  [_/_] project"))
+  (spacemacs/transient-state-register-add-bindings 'symbol-highlight
+    '(("s" swiper-thing-at-point :exit t)
+      ("b" swiper-all-thing-at-point :exit t)
+      ("/" +default/search-project-for-symbol-at-point :exit t)
+      ))
+
   (defun my/expand-symbol-highligh-mode ()
-    (progn
-      (setq spacemacs--symbol-highlight-transient-state-doc
-            (concat
-             spacemacs--symbol-highlight-transient-state-doc
-             "  Search: [_s_] swiper  [_b_] buffers  [_f_] files  [_/_] project"))
-      (spacemacs/transient-state-register-add-bindings 'symbol-highlight
-        '(("s" swiper-thing-at-point :exit t)
-          ("b" swiper-all-thing-at-point :exit t)
-          ("f" +default/search-other-cwd :exit t)
-          ("/" +default/search-project-for-symbol-at-point :exit t)
-          ))
-      )
     (spacemacs|define-transient-state symbol-highlight
       :title "Symbol Highlight Transient State"
       :hint-is-doc t
