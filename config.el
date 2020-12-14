@@ -303,7 +303,7 @@ the user activate the completion manually."
   (setq spacemacs--symbol-highlight-transient-state-doc
         (concat
          spacemacs--symbol-highlight-transient-state-doc
-         "  Search: [_s_] swiper  [_b_] buffers  files  [_/_] project"))
+         "  Search: [_s_] swiper  [_b_] buffers  [_/_] project"))
   (spacemacs/transient-state-register-add-bindings 'symbol-highlight
     '(("s" swiper-thing-at-point :exit t)
       ("b" swiper-all-thing-at-point :exit t)
