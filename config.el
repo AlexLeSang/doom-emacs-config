@@ -298,11 +298,6 @@ the user activate the completion manually."
 (add-hook 'c++-mode-hook #'init-clang-format-buffer)
 (add-hook 'c-mode-hook #'init-clang-format-buffer)
 
-;; spacemacs/enter-ahs-backward
-(after! evil-commands
-  (map! :map evil-motion-state-map "*" #'spacemacs/enter-ahs-forward)
-  )
-
 ;; highlighting symbols
 (after! auto-highlight-symbol
   (setq spacemacs--symbol-highlight-transient-state-doc
