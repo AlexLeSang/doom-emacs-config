@@ -303,11 +303,12 @@ the user activate the completion manually."
   (setq spacemacs--symbol-highlight-transient-state-doc
         (concat
          spacemacs--symbol-highlight-transient-state-doc
-         "  Search: [_s_] swiper  [_b_] buffers  [_/_] project"))
+         "  Search: [_s_] swiper  [_b_] buffers  [_f_] files  [_/_] project"))
   (spacemacs/transient-state-register-add-bindings 'symbol-highlight
     '(("s" swiper-thing-at-point :exit t)
       ("b" swiper-all-thing-at-point :exit t)
-      ("/" +default/search-project-for-symbol-at-point :exit t)
+      ("f" spacemacs/search-auto-region-or-symbol :exit t)
+      ("/" spacemacs/search-project-auto-region-or-symbol :exit t)
       ))
 
   (defun my/expand-symbol-highligh-mode ()
@@ -331,3 +332,11 @@ the user activate the completion manually."
 
   (add-hook 'auto-highlight-symbol-mode-hook #'my/expand-symbol-highligh-mode)
   )
+
+;; search maps
+(map! :map doom-leader-map "/" #'spacemacs/search-project-auto)
+(map! :map doom-leader-search-map "p" #'spacemacs/search-project-auto)
+
+(map! :map doom-leader-map "sf" #'spacemacs/search-auto)
+(map! :map doom-leader-search-map "f" #'spacemacs/search-auto)
+
