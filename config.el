@@ -342,3 +342,16 @@ the user activate the completion manually."
 (after! projectile
   (setq projectile-svn-command "fd -0 -t f"
         projectile-generic-command "fd -0 -t f"))
+
+
+;; minibuffer performance improvements
+(setq default-gc-cons-threshold gc-cons-threshold)
+
+(defun set-gc-to-max ()
+    (setq gc-cons-threshold most-positive-fixnum))
+
+(defun restore-gc ()
+  (setq gc-cons-threshold default-gc-cons-threshold))
+
+(add-hook 'minibuffer-setup-hook #'set-gc-to-max)
+(add-hook 'minibuffer-exit-hook #'restore-gc)
