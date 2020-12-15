@@ -356,3 +356,26 @@ the user activate the completion manually."
 
 (add-hook 'minibuffer-setup-hook #'set-gc-to-max)
 (add-hook 'minibuffer-exit-hook #'restore-gc)
+(add-hook 'minibuffer-exit-hook #'garbage-collect)
+
+(add-hook 'evil-insert-state-entry-hook #'set-gc-to-max)
+(add-hook 'evil-insert-state-exit-hook #'restore-gc)
+(add-hook 'evil-insert-state-exit-hook #'garbage-collect)
+
+(setq garbage-collection-messages t)
+
+;; ivy posframe hook
+(defun my/ivy-toggle-gc ()
+  (if (eq default-gc-cons-threshold gc-cons-threshold)
+      (set-gc-to-max)
+    ((progn
+       (restore-gc)
+       (garbage-collect))))
+ )
+
+(add-hook 'ivy-posframe-mode-hook #'my/ivy-toggle-gc)
+
+;; Reduce flickering with which-key delay
+(after! which-key
+  (setq which-key-idle-delay completion-box-doc-delay
+        which-key-idle-secondary-delay compleiton-delay))
