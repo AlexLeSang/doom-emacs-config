@@ -56,7 +56,7 @@
 (setq doom-font (font-spec :family "Fira Code" :size 14))
 
 (setq gc-cons-threshold (* 4 1024 1024 1024))
-(setq gc-cons-percentage 0.4)
+(setq gc-cons-percentage 0.2)
 (setq truncate-lines nil)
 
 ;; spacemacs keybindings
@@ -356,13 +356,11 @@ the user activate the completion manually."
 
 (add-hook 'minibuffer-setup-hook #'set-gc-to-max)
 (add-hook 'minibuffer-exit-hook #'restore-gc)
-(add-hook 'minibuffer-exit-hook #'garbage-collect)
 
 (add-hook 'evil-insert-state-entry-hook #'set-gc-to-max)
 (add-hook 'evil-insert-state-exit-hook #'restore-gc)
-(add-hook 'evil-insert-state-exit-hook #'garbage-collect)
 
-(setq garbage-collection-messages t)
+;; (setq garbage-collection-messages t)
 
 ;; ivy posframe hook
 (defun my/ivy-toggle-gc ()
