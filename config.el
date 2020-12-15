@@ -238,7 +238,6 @@ the user activate the completion manually."
 
 ;; (add-hook 'c++-mode-hook #'remove-dos-eol)
 
-;; (require 'logview)
 
 (after! avy
   (setq avy-all-windows 'all-frames))
@@ -339,6 +338,10 @@ the user activate the completion manually."
 (map! :map doom-leader-search-map "f" #'spacemacs/search-auto)
 
 (map! :map evil-normal-state-map :g "gs" #'swiper)
+
+;; (map! :map doom-leader-map "sb" #'swiper)
+;; (map! :map doom-leader-search-map "b" #'swiper)
+
 
 (after! projectile
   (setq projectile-svn-command "fd -0 -t f"

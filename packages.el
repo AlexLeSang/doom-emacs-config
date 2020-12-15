@@ -82,3 +82,7 @@
 (package! arduino-mode :recipe (:host github :repo "bookest/arduino-mode"))
 
 (package! clang-format)
+
+(package! logview)
+
+(package! syslog-mode)
