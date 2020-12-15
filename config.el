@@ -338,3 +338,7 @@ the user activate the completion manually."
 
   (add-hook 'auto-highlight-symbol-mode-hook #'my/expand-symbol-highligh-mode)
   )
+
+(after! projectile
+  (setq projectile-svn-command "fd -0 -t f"
+        projectile-generic-command "fd -0 -t f"))
