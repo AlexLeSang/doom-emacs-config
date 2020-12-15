@@ -70,7 +70,6 @@
 (after! ivy
   ;; switch to buffer
   (map! :map evil-normal-state-map :g "<C-tab>" #'switch-to-buffer)
-  (map! :map evil-normal-state-map :g "gs" #'swiper)
   (setq +ivy-buffer-preview t)
   (setq ivy-re-builders-alist
         '((t . ivy--regex-ignore-order))))
@@ -338,6 +337,8 @@ the user activate the completion manually."
 
 (map! :map doom-leader-map "sf" #'spacemacs/search-auto)
 (map! :map doom-leader-search-map "f" #'spacemacs/search-auto)
+
+(map! :map evil-normal-state-map :g "gs" #'swiper)
 
 (after! projectile
   (setq projectile-svn-command "fd -0 -t f"
