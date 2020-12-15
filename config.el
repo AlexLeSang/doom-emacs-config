@@ -298,26 +298,20 @@ the user activate the completion manually."
 (add-hook 'c++-mode-hook #'init-clang-format-buffer)
 (add-hook 'c-mode-hook #'init-clang-format-buffer)
 
-;; spacemacs/enter-ahs-backward
-(after! evil-commands
-  (map! :map evil-motion-state-map "*" #'spacemacs/enter-ahs-forward)
-  )
-
 ;; highlighting symbols
 (after! auto-highlight-symbol
+  (setq spacemacs--symbol-highlight-transient-state-doc
+        (concat
+         spacemacs--symbol-highlight-transient-state-doc
+         "  Search: [_s_] swiper  [_b_] buffers  [_f_] files  [_/_] project"))
+  (spacemacs/transient-state-register-add-bindings 'symbol-highlight
+    '(("s" swiper-thing-at-point :exit t)
+      ("b" swiper-all-thing-at-point :exit t)
+      ("f" spacemacs/search-auto-region-or-symbol :exit t)
+      ("/" spacemacs/search-project-auto-region-or-symbol :exit t)
+      ))
+
   (defun my/expand-symbol-highligh-mode ()
-    (progn
-      (setq spacemacs--symbol-highlight-transient-state-doc
-            (concat
-             spacemacs--symbol-highlight-transient-state-doc
-             "  Search: [_s_] swiper  [_b_] buffers  [_f_] files  [_/_] project"))
-      (spacemacs/transient-state-register-add-bindings 'symbol-highlight
-        '(("s" swiper-thing-at-point :exit t)
-          ("b" swiper-all-thing-at-point :exit t)
-          ("f" +default/search-other-cwd :exit t)
-          ("/" +default/search-project-for-symbol-at-point :exit t)
-          ))
-      )
     (spacemacs|define-transient-state symbol-highlight
       :title "Symbol Highlight Transient State"
       :hint-is-doc t
@@ -338,6 +332,12 @@ the user activate the completion manually."
 
   (add-hook 'auto-highlight-symbol-mode-hook #'my/expand-symbol-highligh-mode)
   )
+;; search maps
+(map! :map doom-leader-map "/" #'spacemacs/search-project-auto)
+(map! :map doom-leader-search-map "p" #'spacemacs/search-project-auto)
+
+(map! :map doom-leader-map "sf" #'spacemacs/search-auto)
+(map! :map doom-leader-search-map "f" #'spacemacs/search-auto)
 
 (after! projectile
   (setq projectile-svn-command "fd -0 -t f"
