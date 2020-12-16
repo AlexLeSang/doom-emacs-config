@@ -337,7 +337,7 @@ the user activate the completion manually."
 (map! :map doom-leader-map "sf" #'spacemacs/search-auto)
 (map! :map doom-leader-search-map "f" #'spacemacs/search-auto)
 
-(map! :map evil-normal-state-map :g "gs" #'swiper)
+;; (map! :map evil-normal-state-map :g "gs" #'swiper)
 
 ;; (map! :map doom-leader-map "sb" #'swiper)
 ;; (map! :map doom-leader-search-map "b" #'swiper)
