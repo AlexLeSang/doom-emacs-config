@@ -343,7 +343,6 @@ the user activate the completion manually."
 ;; (map! :map doom-leader-map "sb" #'swiper)
 ;; (map! :map doom-leader-search-map "b" #'swiper)
 
-
 (after! projectile
   (setq projectile-svn-command "fd -0 -t f"
         projectile-generic-command "fd -0 -t f"))
@@ -381,3 +380,15 @@ the user activate the completion manually."
 (after! which-key
   (setq which-key-idle-delay completion-box-doc-delay
         which-key-idle-secondary-delay compleiton-delay))
+
+;; TODO combine lsp with ggtags
+
+;; TODO fix performance problems for avy jump line
+
+;; TODO add key bindings for lsp rename
+
+;; TODO make eshell more like the one in spacemacs
+
+;; TODO save aliases for eshell
+
+(message "Done loading config.el")
