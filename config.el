@@ -390,6 +390,26 @@ the user activate the completion manually."
 
 ;; TODO make eshell more like the one in spacemacs
 
-;; TODO save aliases for eshell
+;; Aliases for eshell
+(set-eshell-alias!
+ "e"  "find-file $1"
+ "ff" "find . -type f -name \"*$1*\"")
+
+(setq +eshell-enable-new-shell-on-split nil
+      +eshell-kill-window-on-exit nil)
+
+
+(after! eshell
+  (remove-hook 'eshell-mode-hook #'+eshell-remove-fringes-h)
+  (remove-hook 'eshell-mode-hook #'+eshell-enable-text-wrapping-h)
+  (remove-hook 'eshell-mode-hook #'hide-mode-line-mode)
+
+  ;; Consider eshell buffers real
+  ;; (remove-hook 'eshell-mode-hook #'doom-mark-buffer-as-real-h)
+
+  ;; Keep track of open eshell buffers
+  ;; (remove-hook 'eshell-mode-hook #'+eshell-init-h)
+  ;; (remove-hook 'eshell-exit-hook #'+eshell-cleanup-h)
+)
 
 (message "Done loading config.el")
