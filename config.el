@@ -177,8 +177,9 @@ the user activate the completion manually."
       (map! :map eshell-mode-map :i "<tab>" #'completion-at-point)
       (map! :map eshell-mode-map :in "C-l" nil)
       (map! :map eshell-mode-map :in "C-l" #'my/eshell-clear-keystroke)
-      (map! :map eshell-mode-map :in "M-l" nil)
-      (map! :map eshell-mode-map :in "M-l" #'my/ivy-eshell-history)))
+      ;; (map! :map eshell-mode-map :in "M-l" nil)
+      ;; (map! :map eshell-mode-map :in "M-l" #'my/ivy-eshell-history)
+      ))
 
   (add-hook 'eshell-mode-hook #'spacemacs/init-ivy-eshell))
 
