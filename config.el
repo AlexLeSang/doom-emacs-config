@@ -56,7 +56,7 @@
 ;; (setq doom-font (font-spec :family "Source Code Pro" :size 15))
 
 (when (string= (system-name) "halushko-VirtualBox")
-    (setq doom-font (font-spec :family "Fira Code" :size 13)))
+  (setq doom-font (font-spec :family "Fira Code" :size 13)))
 
 (setq gc-cons-threshold (* 4 1024 1024 1024))
 (setq gc-cons-percentage 0.2)
@@ -192,8 +192,7 @@ the user activate the completion manually."
     (setq eshell-command-aliases-list +eshell-aliases
           +eshell--default-aliases eshell-command-aliases-list))
 
-  (add-hook 'eshell-mode-hook #'my-eshell-set-aliases)
-  )
+  (add-hook 'eshell-mode-hook #'my-eshell-set-aliases))
 
 (set-eshell-alias!
  "e"  "find-file $1"
@@ -371,7 +370,7 @@ the user activate the completion manually."
 (setq default-gc-cons-threshold gc-cons-threshold)
 
 (defun set-gc-to-max ()
-    (setq gc-cons-threshold most-positive-fixnum))
+  (setq gc-cons-threshold most-positive-fixnum))
 
 (defun restore-gc ()
   (setq gc-cons-threshold default-gc-cons-threshold))
@@ -391,7 +390,7 @@ the user activate the completion manually."
     ((progn
        (restore-gc)
        (garbage-collect))))
- )
+  )
 
 (add-hook 'ivy-posframe-mode-hook #'my/ivy-toggle-gc)
 
@@ -400,7 +399,6 @@ the user activate the completion manually."
   (setq which-key-idle-delay completion-box-doc-delay
         which-key-idle-secondary-delay compleiton-delay))
 
-;; TODO combine lsp with ggtags
 
 (after! highlight-indent-guides
   (setq highlight-indent-guides-method 'fill
@@ -411,6 +409,34 @@ the user activate the completion manually."
 
 ;; TODO add key bindings for lsp rename
 
-;; TODO make eshell more like the one in spacemacs
+;; TODO ggtags
+
+(use-package! ggtags
+  :defer t
+  :init (progn
+          (defvar gtags-enable-by-default t
+            "Whether or not to enable ggtags-mode.")
+
+          (defun spacemacs/ggtags-mode-enable ()
+            "Enable ggtags and eldoc mode.
+
+For eldoc, ggtags advises the eldoc function at the lowest priority
+so that if the major mode has better support it will use it first."
+            (when gtags-enable-by-default
+              (ggtags-mode 1)
+              (eldoc-mode 1)))
+          )
+  :hook ((c-mode c++-mode) . spacemacs/ggtags-mode-enable)
+  )
+
+(use-package! counsel-gtags
+  :defer t
+  :init
+  (progn
+    (setq counsel-gtags-ignore-case t
+          counsel-gtags-auto-update t)
+    )
+  :hook ((c-mode c++-mode) . counsel-gtags-mode)
+  )
 
 (message "Done loading config.el")
