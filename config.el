@@ -127,8 +127,10 @@
           ("XXX"   . ,(face-foreground 'error))
           ("XXXX"  . ,(face-foreground 'error)))))
 
-;; protect eshell
 (after! eshell
+  (setq +eshell-enable-new-shell-on-split nil
+        +eshell-kill-window-on-exit nil)
+
   (defun my/toggle-shell-auto-completion-based-on-path ()
     "Deactivates automatic completion on remote paths.
 Retrieving completions for Eshell blocks Emacs. Over remote
@@ -152,10 +154,7 @@ the user activate the completion manually."
 
   (add-hook 'evil-insert-state-entry-hook #'my/eshell-auto-end)
   (add-hook 'evil-hybrid-state-entry-hook #'my/eshell-auto-end)
-  )
 
-;; eshell aliases
-(after! eshell
   ;; eshell-mode imenu index
   (defun eshell/l (&rest args) (eshell/ls "-l" args))
   (defun eshell/e (file) (find-file file))
@@ -183,7 +182,24 @@ the user activate the completion manually."
       ;; (map! :map eshell-mode-map :in "M-l" #'my/ivy-eshell-history)
       ))
 
-  (add-hook 'eshell-mode-hook #'spacemacs/init-ivy-eshell))
+  (add-hook 'eshell-mode-hook #'spacemacs/init-ivy-eshell)
+
+  (remove-hook 'eshell-mode-hook #'+eshell-remove-fringes-h)
+  (remove-hook 'eshell-mode-hook #'hide-mode-line-mode)
+
+
+  (defun my-eshell-set-aliases ()
+    (setq eshell-command-aliases-list +eshell-aliases
+          +eshell--default-aliases eshell-command-aliases-list))
+
+  (add-hook 'eshell-mode-hook #'my-eshell-set-aliases)
+  )
+
+(set-eshell-alias!
+ "e"  "find-file $1"
+ "ff" "find . -type f -name \"*$1*\""
+ "st" "svn st -q $*"
+ "sd" "svn diff $*")
 
 ;; evil snipe
 (after! evil-snipe
@@ -391,27 +407,5 @@ the user activate the completion manually."
 ;; TODO add key bindings for lsp rename
 
 ;; TODO make eshell more like the one in spacemacs
-
-;; Aliases for eshell
-(set-eshell-alias!
- "e"  "find-file $1"
- "ff" "find . -type f -name \"*$1*\"")
-
-(setq +eshell-enable-new-shell-on-split nil
-      +eshell-kill-window-on-exit nil)
-
-
-(after! eshell
-  (remove-hook 'eshell-mode-hook #'+eshell-remove-fringes-h)
-  (remove-hook 'eshell-mode-hook #'+eshell-enable-text-wrapping-h)
-  (remove-hook 'eshell-mode-hook #'hide-mode-line-mode)
-
-  ;; Consider eshell buffers real
-  ;; (remove-hook 'eshell-mode-hook #'doom-mark-buffer-as-real-h)
-
-  ;; Keep track of open eshell buffers
-  ;; (remove-hook 'eshell-mode-hook #'+eshell-init-h)
-  ;; (remove-hook 'eshell-exit-hook #'+eshell-cleanup-h)
-)
 
 (message "Done loading config.el")
