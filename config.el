@@ -54,7 +54,9 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 ;; (setq doom-font (font-spec :family "Source Code Pro" :size 15))
-(setq doom-font (font-spec :family "Fira Code" :size 14))
+
+(when (string= (system-name) "halushko-VirtualBox")
+    (setq doom-font (font-spec :family "Fira Code" :size 13)))
 
 (setq gc-cons-threshold (* 4 1024 1024 1024))
 (setq gc-cons-percentage 0.2)
