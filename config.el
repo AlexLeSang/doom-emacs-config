@@ -402,6 +402,11 @@ the user activate the completion manually."
 
 ;; TODO combine lsp with ggtags
 
+(after! highlight-indent-guides
+  (setq highlight-indent-guides-method 'fill
+        highlight-indent-guides-responsive 'stack))
+
+
 ;; TODO fix performance problems for avy jump line
 
 ;; TODO add key bindings for lsp rename
