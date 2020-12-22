@@ -439,4 +439,7 @@ so that if the major mode has better support it will use it first."
   :hook ((c-mode c++-mode) . counsel-gtags-mode)
   )
 
+(after! electric
+  (setq electric-indent-mode nil))
+
 (message "Done loading config.el")

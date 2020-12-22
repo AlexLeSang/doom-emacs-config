@@ -86,3 +86,6 @@
 (package! logview)
 
 (package! syslog-mode)
+
+(package! ggtags)
+(package! counsel-gtags)
