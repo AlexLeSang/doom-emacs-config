@@ -150,7 +150,7 @@ the user activate the completion manually."
                ;; Not on the last sent command if we use smart-eshell so we can
                ;; edit it.
                )
-      (end-of-buffer)))
+      (goto-char (point-max))))
 
   (add-hook 'evil-insert-state-entry-hook #'my/eshell-auto-end)
   (add-hook 'evil-hybrid-state-entry-hook #'my/eshell-auto-end)
@@ -283,13 +283,13 @@ the user activate the completion manually."
           (if (looking-at "->") t nil)))))
 
   (defun do-yas-expand ()
-    (yas/expand))
+    (yas-expand))
 
   (defun tab-indent-or-complete ()
     (interactive)
     (if (minibufferp)
         (minibuffer-complete)
-      (if (or (not yas/minor-mode)
+      (if (or (not yas-minor-mode)
               (null (do-yas-expand)))
           (if (check-expansion)
               (company-complete-common)
@@ -387,9 +387,9 @@ the user activate the completion manually."
 (defun my/ivy-toggle-gc ()
   (if (eq default-gc-cons-threshold gc-cons-threshold)
       (set-gc-to-max)
-    ((progn
-       (restore-gc)
-       (garbage-collect))))
+    (progn
+      (restore-gc)
+      (garbage-collect)))
   )
 
 (add-hook 'ivy-posframe-mode-hook #'my/ivy-toggle-gc)
