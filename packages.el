@@ -89,3 +89,9 @@
 
 (package! ggtags)
 (package! counsel-gtags)
+
+(package! with-shell-interpreter)
+(package! friendly-tramp-path)
+(package! friendly-shell-command)
+(package! friendly-shell)
+(package! friendly-remote-shell)

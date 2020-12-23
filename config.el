@@ -442,4 +442,21 @@ so that if the major mode has better support it will use it first."
 (after! electric
   (setq electric-indent-mode nil))
 
+
+;; friendly eshell
+(use-package! friendly-shell-command
+  :defer t)
+
+(use-package! friendly-shell
+  :defer t)
+
+(use-package! friendly-remote-shell
+  :defer t)
+
+(use-package! friendly-tramp-path
+  :after tramp)
+
+(when (string= (system-name) "halushko-VirtualBox")
+  (load! "~/.doom.d/modules/sgs/+sgs"))
+
 (message "Done loading config.el")
