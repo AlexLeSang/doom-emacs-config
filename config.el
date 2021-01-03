@@ -462,4 +462,10 @@ so that if the major mode has better support it will use it first."
 (when (string= (system-name) "halushko-VirtualBox")
   (load! "~/.doom.d/modules/sgs/+sgs"))
 
+
+(use-package! golden
+  :defer t
+  :init
+  (global-golden-mode))
+
 (message "Done loading config.el")
