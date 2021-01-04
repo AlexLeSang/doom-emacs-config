@@ -57,7 +57,7 @@
 
 (if (string= (system-name) "halushko-VirtualBox")
     (setq doom-font (font-spec :family "Fira Code" :size 13))
-  (setq doom-font (font-spec :family "Fira Code" :size 12)))
+  (setq doom-font (font-spec :family "Fira Code" :size 14)))
 
 (setq gc-cons-threshold (* 4 1024 1024 1024))
 (setq gc-cons-percentage 0.2)
@@ -461,11 +461,5 @@ so that if the major mode has better support it will use it first."
 
 (when (string= (system-name) "halushko-VirtualBox")
   (load! "~/.doom.d/modules/sgs/+sgs"))
-
-
-(use-package! golden
-  :defer t
-  :init
-  (global-golden-mode))
 
 (message "Done loading config.el")
