@@ -463,6 +463,11 @@ so that if the major mode has better support it will use it first."
 (when (string= (system-name) "halushko-VirtualBox")
   (load! "~/.doom.d/modules/sgs/+sgs"))
 
+(after! lsp-mode
+  (map! :map (c-mode-map c++-mode-map)
+        (:localleader
+         :desc "Rename" "R" #'lsp-rename)))
+
 ;; (after! ccls-semantic-highlight
 ;;   (setq ccls-sem-highlight-method 'overlay)
 ;;   (defun ccls-overlay-hook ()
