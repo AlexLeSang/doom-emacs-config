@@ -463,4 +463,13 @@ so that if the major mode has better support it will use it first."
 (when (string= (system-name) "halushko-VirtualBox")
   (load! "~/.doom.d/modules/sgs/+sgs"))
 
+;; (after! ccls-semantic-highlight
+;;   (setq ccls-sem-highlight-method 'overlay)
+;;   (defun ccls-overlay-hook ()
+;;     (progn
+;;       (ccls-use-default-rainbow-sem-highlight)))
+
+;;   (add-hook 'c++-mode-hook #'ccls-overlay-hook)
+;;   (add-hook 'c-mode-hook #'ccls-overlay-hook))
+
 (message "Done loading config.el")
