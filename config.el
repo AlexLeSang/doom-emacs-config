@@ -85,9 +85,15 @@
 (after! evil-escape
   (setq evil-escape-inhibit-functions nil))
 
-;; Color mode
-(add-hook 'prog-mode-hook #'rainbow-identifiers-mode)
-(add-hook 'prog-mode-hook #'color-identifiers-mode)
+;; Colors
+(after! rainbow-identifiers
+  (add-hook 'emacs-lisp-mode-hook 'rainbow-identifiers-mode))
+
+(after! rainbow-delimiters
+  (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode))
+
+(after! color-identifiers
+  (add-hook 'emacs-lisp-mode-hook 'color-identifiers-mode))
 
 ;; company settings
 (setq compleiton-delay 0.8
