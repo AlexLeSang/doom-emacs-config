@@ -409,9 +409,9 @@ the user activate the completion manually."
         which-key-idle-secondary-delay compleiton-delay))
 
 
-(after! highlight-indent-guides
-  (setq highlight-indent-guides-method 'fill
-        highlight-indent-guides-responsive 'stack))
+;; (after! highlight-indent-guides
+;;   (setq highlight-indent-guides-method 'fill
+;;         highlight-indent-guides-responsive 'stack))
 
 
 ;; TODO fix performance problems for avy jump line
