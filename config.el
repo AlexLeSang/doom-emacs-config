@@ -95,8 +95,10 @@
 
 (after! company
   (setq company-idle-delay compleiton-delay
-        company-minimum-prefix-length 3)
-  (setq company-show-numbers t)
+        company-minimum-prefix-length 3
+        company-show-numbers nil
+        company-tooltip-idle-delay 3
+        company-tooltip-timer 3)
   (add-hook 'evil-normal-state-entry-hook #'company-abort))
 
 
@@ -213,7 +215,10 @@ the user activate the completion manually."
         lsp-ui-doc-position 'bottom
         lsp-ui-doc-include-signature t
         lsp-ui-sideline-show-code-actions nil
-        lsp-ui-sideline-show-diagnostics nil))
+        lsp-ui-sideline-show-diagnostics nil
+        lsp--delay-timer 1
+        lsp--on-change-timer 1
+        lsp--on-idle-timer 1))
 
 (after! lsp-ui-peek
   (setq lsp-ui-peek-enable nil))
@@ -475,5 +480,9 @@ so that if the major mode has better support it will use it first."
 
 ;;   (add-hook 'c++-mode-hook #'ccls-overlay-hook)
 ;;   (add-hook 'c-mode-hook #'ccls-overlay-hook))
+
+(after! flycheck
+  (setq flycheck-display-errors-delay 3.5
+        flycheck-display-error-at-point-timer 2))
 
 (message "Done loading config.el")
