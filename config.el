@@ -400,7 +400,7 @@ the user activate the completion manually."
 ;; Reduce flickering with which-key delay
 (after! which-key
   (setq which-key-idle-delay completion-box-doc-delay
-        which-key-idle-secondary-delay compleiton-delay))
+        which-key-idle-secondary-delay (* 3 compleiton-delay)))
 
 
 ;; (after! highlight-indent-guides
