@@ -86,7 +86,7 @@
   (setq evil-escape-inhibit-functions nil))
 
 ;; Colors
-(add-hook! '(emacs-lisp-mode-hook c-mode-hook c++-mode-hook cmake-mode-hook compilation-mode-hook shell-mode-hook) #'rainbow-delimiters-mode #'rainbow-identifiers-mode)
+(add-hook! '(emacs-lisp-mode-hook c-mode-hook c++-mode-hook cmake-mode-hook compilation-mode-hook shell-mode-hook js2-mode-hook python-mode-hook) #'rainbow-delimiters-mode #'rainbow-identifiers-mode)
 ;; (add-hook! emacs-lisp-mode-hook #'color-identifiers-mode)
 
 ;; company settings
