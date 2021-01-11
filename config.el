@@ -447,6 +447,9 @@ so that if the major mode has better support it will use it first."
 (after! electric
   (setq electric-indent-mode nil))
 
+(after! counsel
+  (setq counsel-rg-base-command '("rg" "-m" "150" "-M" "240" "--with-filename" "--smart-case" "--no-heading" "--line-number" "--color" "never" "%s")))
+
 
 ;; friendly eshell
 (use-package! friendly-shell-command
