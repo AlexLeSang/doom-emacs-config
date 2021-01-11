@@ -486,4 +486,11 @@ so that if the major mode has better support it will use it first."
   (setq flycheck-display-errors-delay 3
         flycheck-display-error-at-point-timer 1))
 
+;; Improve visibility for logs
+(defun log-mode ()
+  "Settins for log analysis mode"
+  (interactive)
+  (progn
+    (prog-mode)
+    (rainbow-identifiers-mode)))
 (message "Done loading config.el")
