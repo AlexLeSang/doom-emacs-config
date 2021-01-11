@@ -483,7 +483,7 @@ so that if the major mode has better support it will use it first."
 ;;   (add-hook 'c-mode-hook #'ccls-overlay-hook))
 
 (after! flycheck
-  (setq flycheck-display-errors-delay 3.5
-        flycheck-display-error-at-point-timer 2))
+  (setq flycheck-display-errors-delay 3
+        flycheck-display-error-at-point-timer 1))
 
 (message "Done loading config.el")
