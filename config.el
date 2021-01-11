@@ -462,6 +462,7 @@ so that if the major mode has better support it will use it first."
   :defer t)
 
 (use-package! friendly-tramp-path
+  :defer t
   :after tramp)
 
 (when (string= (system-name) "halushko-VirtualBox")
