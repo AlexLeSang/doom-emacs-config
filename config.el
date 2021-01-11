@@ -215,10 +215,7 @@ the user activate the completion manually."
         lsp-ui-doc-position 'bottom
         lsp-ui-doc-include-signature t
         lsp-ui-sideline-show-code-actions nil
-        lsp-ui-sideline-show-diagnostics nil
-        lsp--delay-timer 1
-        lsp--on-change-timer 1
-        lsp--on-idle-timer 1))
+        lsp-ui-sideline-show-diagnostics nil))
 
 (after! lsp-ui-peek
   (setq lsp-ui-peek-enable nil))
