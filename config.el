@@ -483,6 +483,9 @@ so that if the major mode has better support it will use it first."
         (:localleader
          :desc "Rename" "R" #'lsp-rename)))
 
+(after! ccls
+  (setq ccls-executable "/home/halushko/bin/ccls.sh"))
+
 ;; (after! ccls-semantic-highlight
 ;;   (setq ccls-sem-highlight-method 'overlay)
 ;;   (defun ccls-overlay-hook ()
