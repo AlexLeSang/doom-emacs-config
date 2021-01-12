@@ -441,8 +441,18 @@ so that if the major mode has better support it will use it first."
     (setq counsel-gtags-ignore-case t
           counsel-gtags-auto-update t)
     )
-  :hook ((c-mode c++-mode) . counsel-gtags-mode)
-  )
+  :hook ((c-mode c++-mode) . counsel-gtags-mode))
+
+(defun init-gtags ()
+   (progn
+     (map! :map (c-mode-map c++-mode-map)
+           (:localleader
+            :desc "gtags dwim" "gg" #'counsel-gtags-dwim
+            :desc "gtags dwim" "gr" #'counsel-gtags-find-reference
+            :desc "gtags dwim" "gd" #'counsel-gtags-find-definition))))
+
+(add-hook 'c++-mode-hook #'init-gtags)
+(add-hook 'c-mode-hook #'init-gtags)
 
 (after! electric
   (setq electric-indent-mode nil))
