@@ -159,7 +159,7 @@ the user activate the completion manually."
   (add-hook 'evil-hybrid-state-entry-hook #'my/eshell-auto-end)
 
   ;; eshell-mode imenu index
-  (defun eshell/l (&rest args) (eshell/ls "-l" args))
+  (defun eshell/l (&rest args) (eshell/ls "-lah" args))
   (defun eshell/e (file) (find-file file))
   (defun eshell/md (dir) (eshell/mkdir dir) (eshell/cd dir))
 
