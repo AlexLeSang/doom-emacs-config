@@ -514,4 +514,16 @@ so that if the major mode has better support it will use it first."
   (progn
     (prog-mode)
     (rainbow-identifiers-mode)))
+(after! spell-fu-mode
+  (setq spell-check-delay 3
+   spell-fu-idle-delay spell-check-delay)
+
+  (defun disable-spell-check ()
+    (setq spell-fu-idle-delay 300))
+
+  (defun enable-spell-check ()
+    (setq spell-fu-idle-delay spell-check-delay))
+
+  (add-hook 'evil-insert-state-entry-hook #'disable-spell-check)
+  (add-hook 'evil-insert-state-exit-hook #'enable-spell-check))
 (message "Done loading config.el")
