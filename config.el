@@ -449,7 +449,9 @@ so that if the major mode has better support it will use it first."
            (:localleader
             :desc "gtags dwim" "gg" #'counsel-gtags-dwim
             :desc "gtags dwim" "gr" #'counsel-gtags-find-reference
-            :desc "gtags dwim" "gd" #'counsel-gtags-find-definition))))
+            :desc "gtags dwim" "gd" #'counsel-gtags-find-definition
+            :desc "gtags dwim" "gb" #'counsel-gtags-go-backward
+            :desc "gtags dwim" "gf" #'counsel-gtags-go-forward))))
 
 (add-hook 'c++-mode-hook #'init-gtags)
 (add-hook 'c-mode-hook #'init-gtags)
