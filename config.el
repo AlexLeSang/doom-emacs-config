@@ -526,4 +526,9 @@ so that if the major mode has better support it will use it first."
 
   (add-hook 'evil-insert-state-entry-hook #'disable-spell-check)
   (add-hook 'evil-insert-state-exit-hook #'enable-spell-check))
+
+;; vc configuration
+(after! vc-dir
+  (version-control/init-vc))
+
 (message "Done loading config.el")
