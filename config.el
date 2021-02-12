@@ -169,7 +169,7 @@ the user activate the completion manually."
   (add-hook 'evil-hybrid-state-entry-hook #'my/eshell-auto-end)
 
   ;; eshell-mode imenu index
-  (defun eshell/l (&rest args) (eshell/ls "-lah" args))
+  ;; (defun eshell/l (&rest args) (eshell/ls "-lah" args))
   (defun eshell/e (file) (find-file file))
   (defun eshell/md (dir) (eshell/mkdir dir) (eshell/cd dir))
 
@@ -209,6 +209,7 @@ the user activate the completion manually."
 
 (set-eshell-alias!
  "e"  "find-file $1"
+ "l"  "ls -lah \"$1\""
  "ff" "find . -type f -name \"*$1*\""
  "st" "svn st -q $*"
  "sd" "svn diff $*")
