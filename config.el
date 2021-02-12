@@ -25,8 +25,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-;; (setq doom-theme 'zenburn)
-(setq doom-theme 'hc-zenburn)
+;; (setq doom-theme 'hc-zenburn)
+(setq doom-theme 'doom-one-light)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -86,7 +86,17 @@
   (setq evil-escape-inhibit-functions nil))
 
 ;; Colors
-(add-hook! '(emacs-lisp-mode-hook c-mode-hook c++-mode-hook cmake-mode-hook compilation-mode-hook shell-mode-hook js2-mode-hook python-mode-hook makefile-mode-hook) #'rainbow-delimiters-mode #'rainbow-identifiers-mode)
+(add-hook! '(emacs-lisp-mode-hook
+             c-mode-hook
+             c++-mode-hook
+             cmake-mode-hook
+             compilation-mode-hook
+             shell-mode-hook
+             js2-minor-mode
+             python-mode-hook
+             makefile-mode-hook)
+           #'rainbow-delimiters-mode
+           #'rainbow-identifiers-mode)
 ;; (add-hook! emacs-lisp-mode-hook #'color-identifiers-mode)
 
 ;; company settings
@@ -262,7 +272,8 @@ the user activate the completion manually."
 
 
 (after! avy
-  (setq avy-all-windows 'all-frames))
+  (setq avy-all-windows 'all-frames
+        avy-timeout-seconds 0.8))
 
 (after! all-the-icons
   (setq all-the-icons-scale-factor 1.0))
@@ -514,6 +525,13 @@ so that if the major mode has better support it will use it first."
   (progn
     (prog-mode)
     (rainbow-identifiers-mode)))
+
+;; TODO connect to eshell
+;; https://melpa.org/#/xah-find
+(use-package! xah-find
+  :defer t
+  :after eshell)
+
 (after! spell-fu-mode
   (setq spell-check-delay 3
    spell-fu-idle-delay spell-check-delay)
