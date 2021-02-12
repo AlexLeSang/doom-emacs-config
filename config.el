@@ -417,16 +417,6 @@ the user activate the completion manually."
         which-key-idle-secondary-delay (* 3 compleiton-delay)))
 
 
-;; (after! highlight-indent-guides
-;;   (setq highlight-indent-guides-method 'fill
-;;         highlight-indent-guides-responsive 'stack))
-
-
-;; TODO fix performance problems for avy jump line
-
-;; TODO add key bindings for lsp rename
-
-;; TODO ggtags
 
 (use-package! ggtags
   :defer t
@@ -549,5 +539,15 @@ so that if the major mode has better support it will use it first."
 ;; vc configuration
 (after! vc-dir
   (version-control/init-vc))
+
+;; TODO
+;; TODO custom faster modeline
+;;      - remove git/svn version
+;;      - remove name of the major mmode
+;; TODO add ~,= and < as text object for evil mode
+;; TODO version control for svn from spacemacs
+;; TODO fix performance problems for avy jump line
+;; TODO counsel jump directory to open file in subdirectory
+;; TODO consistent save of eshell history
 
 (message "Done loading config.el")
