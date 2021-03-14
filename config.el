@@ -188,7 +188,7 @@ the user activate the completion manually."
     (counsel-esh-history)
     (evil-insert-state))
 
-  (defun spacemacs/init-ivy-eshell ()
+  (defun my/init-ivy-eshell ()
     "Initialize ivy-eshell."
     (progn
       (map! :map eshell-mode-map :i "<tab>" #'completion-at-point)
@@ -198,7 +198,7 @@ the user activate the completion manually."
       ;; (map! :map eshell-mode-map :in "M-l" #'my/ivy-eshell-history)
       ))
 
-  (add-hook 'eshell-mode-hook #'spacemacs/init-ivy-eshell)
+  (add-hook 'eshell-mode-hook #'my/init-ivy-eshell)
 
   (remove-hook 'eshell-mode-hook #'+eshell-remove-fringes-h)
   (remove-hook 'eshell-mode-hook #'hide-mode-line-mode)
