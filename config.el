@@ -27,7 +27,9 @@
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'zenburn)
 ;; (setq doom-theme 'hc-zenburn)
-(setq doom-theme 'doom-one-light)
+;; (setq doom-theme 'doom-one-light)
+(setq doom-theme 'modus-vivendi)
+;; (setq doom-theme 'modus-operandi)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -550,5 +552,14 @@ so that if the major mode has better support it will use it first."
 ;; TODO fix performance problems for avy jump line
 ;; TODO counsel jump directory to open file in subdirectory
 ;; TODO consistent save of eshell history
+
+;; (setq modus-themes-mode-line 'borderless)
+(setq modus-themes-mode-line 'borderless-moody)
+(setq x-underline-at-descent-line t)
+(setq modus-themes-completions 'opinionated)
+(setq modus-themes-lang-checkers 'subtle-foreground-straight-underline)
+(setq modus-themes-hl-line 'accented-background)
+(setq modus-themes-diffs 'deuteranopia)
+(setq modus-themes-org-blocks 'rainbow)
 
 (message "Done loading config.el")
