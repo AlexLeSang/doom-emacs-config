@@ -495,7 +495,7 @@ so that if the major mode has better support it will use it first."
          :desc "Rename" "R" #'lsp-rename)))
 
 (after! ccls
-  (setq ccls-executable "/home/halushko/bin/ccls.sh"))
+  (setq ccls-executable (expand-file-name "~/ccls.sh")))
 
 ;; (after! ccls-semantic-highlight
 ;;   (setq ccls-sem-highlight-method 'overlay)
