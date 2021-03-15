@@ -516,12 +516,6 @@ so that if the major mode has better support it will use it first."
     (prog-mode)
     (rainbow-identifiers-mode)))
 
-;; TODO connect to eshell
-;; https://melpa.org/#/xah-find
-(use-package! xah-find
-  :defer t
-  :after eshell)
-
 (after! spell-fu-mode
   (setq spell-check-delay 3
    spell-fu-idle-delay spell-check-delay)
