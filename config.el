@@ -552,4 +552,9 @@ so that if the major mode has better support it will use it first."
 (setq modus-themes-diffs 'deuteranopia)
 (setq modus-themes-org-blocks 'rainbow)
 
+;; adoc-mode
+(autoload 'adoc-mode "adoc-mode" nil t)
+(add-to-list 'auto-mode-alist (cons "\\.adoc\\'" 'adoc-mode))
+(add-hook 'adoc-mode-hook (lambda() (setq buffer-face-mode nil)))
+
 (message "Done loading config.el")
