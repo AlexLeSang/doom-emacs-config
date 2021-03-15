@@ -97,7 +97,8 @@
              shell-mode-hook
              js2-minor-mode
              python-mode-hook
-             makefile-mode-hook)
+             makefile-mode-hook
+             adoc-mode-hook)
            #'rainbow-delimiters-mode
            #'rainbow-identifiers-mode)
 ;; (add-hook! emacs-lisp-mode-hook #'color-identifiers-mode)
