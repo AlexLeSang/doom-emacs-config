@@ -201,19 +201,15 @@ the user activate the completion manually."
   (add-hook 'eshell-mode-hook #'my/init-ivy-eshell)
 
   (remove-hook 'eshell-mode-hook #'+eshell-remove-fringes-h)
-  (remove-hook 'eshell-mode-hook #'hide-mode-line-mode)
-
-
-  (defun my-eshell-set-aliases ()
-    (setq eshell-command-aliases-list +eshell-aliases
-          +eshell--default-aliases eshell-command-aliases-list))
-
-  (add-hook 'eshell-mode-hook #'my-eshell-set-aliases))
+  (remove-hook 'eshell-mode-hook #'hide-mode-line-mode))
 
 (set-eshell-alias!
+ "l"  "ls -lah \"$*\""
  "e"  "find-file $1"
  "l"  "ls -lah \"$1\""
  "ff" "find . -type f -name \"*$1*\""
+ "g"  "grep \"$*\""
+ "ff" "find . -type f -iname \"*$1*\""
  "st" "svn st -q $*"
  "sd" "svn diff $*")
 
