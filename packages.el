@@ -95,3 +95,5 @@
 (package! friendly-shell-command)
 (package! friendly-shell)
 (package! friendly-remote-shell)
+
+(package! adoc-mode)
