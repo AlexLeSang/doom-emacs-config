@@ -31,9 +31,10 @@
 ;; (setq doom-theme 'modus-vivendi)
 ;; (setq doom-theme 'modus-operandi)
 
+(require 'dash)
 (setq doom-theme
       (let ((time (car (-select-by-indices '(2) (decode-time (current-time))))))
-        (if (and (> time 19) (< time 7))
+        (if (and (< time 19) (> time 7))
             'modus-operandi
           'modus-vivendi)))
 
