@@ -564,4 +564,7 @@ so that if the major mode has better support it will use it first."
 (add-to-list 'auto-mode-alist (cons "\\.adoc\\'" 'adoc-mode))
 (add-hook 'adoc-mode-hook (lambda() (setq buffer-face-mode nil)))
 
+(after! lsp-mode
+  (setq lsp-clients-elixir-server-executable "elixir-ls"))
+
 (message "Done loading config.el")
