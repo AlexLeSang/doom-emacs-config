@@ -28,8 +28,14 @@
 ;; (setq doom-theme 'zenburn)
 ;; (setq doom-theme 'hc-zenburn)
 ;; (setq doom-theme 'doom-one-light)
-(setq doom-theme 'modus-vivendi)
+;; (setq doom-theme 'modus-vivendi)
 ;; (setq doom-theme 'modus-operandi)
+
+(setq doom-theme
+      (let ((time (car (-select-by-indices '(2) (decode-time (current-time))))))
+        (if (and (> time 19) (< time 7))
+            'modus-operandi
+          'modus-vivendi)))
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
