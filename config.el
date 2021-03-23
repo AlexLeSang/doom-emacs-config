@@ -151,6 +151,9 @@
           ("XXX"   . ,(face-foreground 'error))
           ("XXXX"  . ,(face-foreground 'error)))))
 
+(after! fish-completion
+  (setq fish-completion-fallback-on-bash-p nil))
+
 (after! eshell
   (setq +eshell-enable-new-shell-on-split nil
         +eshell-kill-window-on-exit nil)
