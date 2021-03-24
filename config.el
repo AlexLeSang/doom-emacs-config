@@ -184,6 +184,8 @@ the user activate the completion manually."
 
   ;; eshell-mode imenu index
   (defun eshell/e (file) (find-file file))
+  (defun eshell/up (dir) (eshell-up dir))
+  (defun eshell/pk (dir) (eshell-up-peek dir))
   (defun eshell/md (dir) (eshell/mkdir dir) (eshell/cd dir))
 
   ;; This is a key-command
@@ -204,8 +206,6 @@ the user activate the completion manually."
       (map! :map eshell-mode-map :i "<tab>" #'completion-at-point)
       (map! :map eshell-mode-map :in "C-l" nil)
       (map! :map eshell-mode-map :in "C-l" #'my/eshell-clear-keystroke)
-      ;; (map! :map eshell-mode-map :in "M-l" nil)
-      ;; (map! :map eshell-mode-map :in "M-l" #'my/ivy-eshell-history)
       ))
 
   (add-hook 'eshell-mode-hook #'my/init-ivy-eshell)
@@ -214,14 +214,14 @@ the user activate the completion manually."
   (remove-hook 'eshell-mode-hook #'hide-mode-line-mode))
 
 (set-eshell-alias!
- "l"  "ls -lah \"$*\""
  "e"  "find-file $1"
- "l"  "ls -lah \"$1\""
+ "ff" "find . -type f -iname \"*$1*\""
  "ff" "find . -type f -name \"*$1*\""
  "g"  "grep \"$*\""
- "ff" "find . -type f -iname \"*$1*\""
- "st" "svn st -q $*"
- "sd" "svn diff $*")
+ "l"  "ls -lah \"$*\""
+ "l"  "ls -lah \"$1\""
+ "sd" "svn diff $*"
+ "st" "svn st -q $*")
 
 ;; evil snipe
 (after! evil-snipe
