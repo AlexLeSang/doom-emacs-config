@@ -154,6 +154,9 @@
 (after! fish-completion
   (setq fish-completion-fallback-on-bash-p nil))
 
+;; eshell prompt
+(load! "~/.doom.d/modules/custom-eshell-prompt/custom-eshell-prompt.el")
+
 (after! eshell
   (setq +eshell-enable-new-shell-on-split nil
         +eshell-kill-window-on-exit nil)
@@ -211,7 +214,11 @@ the user activate the completion manually."
   (add-hook 'eshell-mode-hook #'my/init-ivy-eshell)
 
   (remove-hook 'eshell-mode-hook #'+eshell-remove-fringes-h)
-  (remove-hook 'eshell-mode-hook #'hide-mode-line-mode))
+  (remove-hook 'eshell-mode-hook #'hide-mode-line-mode)
+
+  (setq eshell-highlight-prompt nil
+        eshell-prompt-function 'epe-theme-multiline-with-status-custom)
+  )
 
 (set-eshell-alias!
  "e"  "find-file $1"
@@ -552,6 +559,7 @@ so that if the major mode has better support it will use it first."
 ;; TODO fix performance problems for avy jump line
 ;; TODO counsel jump directory to open file in subdirectory
 ;; TODO consistent save of eshell history
+
 
 ;; (setq modus-themes-mode-line 'borderless)
 (setq modus-themes-mode-line 'borderless-moody)
