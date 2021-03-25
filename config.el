@@ -508,7 +508,13 @@ so that if the major mode has better support it will use it first."
          :desc "Rename" "R" #'lsp-rename)))
 
 (after! ccls
-  (setq ccls-executable (expand-file-name "~/bin/ccls.sh")))
+  (setq ccls-executable (expand-file-name "~/bin/ccls.sh"))
+  (setq ccls-initialization-options '(:index (:comments 2) :completion (:detailedLabel t)))
+  (set-lsp-priority! 'ccls 2)) ; optional as ccls is the default in Doom
+
+;; (after! lsp-clangd (set-lsp-priority! 'clangd 5))
+
+;; (set-eglot-client! 'cc-mode '((expand-file-name "~/bin/ccls.sh") "--init={\"index\": {\"threads\": 3}}"))
 
 ;; (after! ccls-semantic-highlight
 ;;   (setq ccls-sem-highlight-method 'overlay)
