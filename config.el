@@ -66,7 +66,7 @@
 ;; (setq doom-font (font-spec :family "Source Code Pro" :size 15))
 
 (if (string= (system-name) "halushko-VirtualBox")
-    (setq doom-font (font-spec :family "Source Code Pro" :size 14))
+    (setq doom-font (font-spec :family "Source Code Pro" :size 13))
   (setq doom-font (font-spec :family "Source Code Pro" :size 14)))
 
 (setq gc-cons-threshold (* 4 1024 1024 1024))
@@ -87,6 +87,9 @@
   (setq +ivy-buffer-preview t)
   (setq ivy-re-builders-alist
         '((t . ivy--regex-ignore-order))))
+
+(after! swiper
+  (setq! swiper-verbose nil))
 
 (after! ivy-posframe
   (setq ivy-posframe-border-width 1))
